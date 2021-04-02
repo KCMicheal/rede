@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 class App extends React.Component {
     state = { 
-        advice: ""
+        advice: ' ',
     };
     componentDidMount() {
         this.fetchAdvice();
@@ -15,16 +15,18 @@ class App extends React.Component {
             this.setState({ advice })
         }).catch((error) => {
             console.log(error)
-        })
+        });
             
     }
     
     render() {
-        const { advice } = this.state;
         return (
             <div className="app">
                 <div className="card">
-                    <h1 className="heading">{advice}</h1>
+                    <h1 className="heading">{this.state.advice}</h1>
+                    <button className="button" onClick={this.fetchAdvice}>
+                        <span>GIVE ME ADVICE</span>
+                    </button>
                 </div>
             </div>
         );
